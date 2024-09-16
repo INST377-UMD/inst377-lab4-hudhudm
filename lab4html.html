@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <style>
+            body {
+                background-color: rgb(129, 176, 129);
+            }
+
+            .section {
+                background-color: pink;
+                border: 2px solid rgb(15, 72, 18);
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .content-area {
+                float: left;
+                margin-left: 10px;
+                width: 48%;
+            }
+
+            aside {
+                float: right;
+                width: 48%;
+                margin-top: 1px;
+                margin-right: 10px;
+            }
+
+            #alertmeSection {
+                margin-top: 5px;
+                padding: 10px;
+            }
+
+            #texttesterSection {
+                margin-top: 25px;
+                padding: 15px;
+            }
+
+            #changecolorSection {
+                margin-top: 4px;
+            }
+
+            #addtextSection {
+                margin-top: 40px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>INST377 - Lab 4 - JAVASCRIPT!!!</h1>
+        
+        <div class = "main-container">
+            <div class = "content-area">
+                <!--Alert Me Section-->
+                <div class = "section" id = "alertmeSection">
+                    <form name = "nameForm" onsubmit = "return(alertMe())">
+                        <label for = "name">Name:</label>
+                        <input type = "text" id="name">
+                        <button>Alert me!</button>
+                    </form>
+                </div>
+
+                <!--Text Tester Section-->
+                <div class = "section" id = "texttesterSection">
+                    <label for = "textTester">Text Tester:</label>
+                    <input type = "text" id = "textTester">
+                    <button onclick = "validateText()">Validate Text</button>
+                </div>
+            </div>
+       
+            <aside id = "buttons">
+                <!--Color Section-->
+                <div class = "section" id = "changecolorSection">
+                    <button onclick = "changeColor()" id = "changeColor">Change color</button>
+                </div>
+
+                <!--Add Text Section-->
+                <div class = "section" id = "addtextSection">
+                    <button onclick = "addText()">Add Text</button>
+                </div>
+            </aside>
+        </div>
+        
+        <script type = "text/javascript">
+            function alertMe() {
+                const name = document.getElementById('name').value;
+                if (document.nameForm.name.value) {
+                    alert("Hi " + name + "!");
+                }
+
+                if (document.nameForm.name.value == "") {
+                    alert("Enter name.")
+                }
+            }
+            
+            function changeColor() {
+                    if(document.body.style.backgroundColor == "sienna") {
+                        const t = document.body.style.backgroundColor = "rgb(129, 176, 129)";
+                    } else {
+                    const t = document.body.style.backgroundColor = "sienna";
+                    }
+            }
+
+            function validateText() {
+                var tester = document.getElementById("textTester").value;
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (tester === "") {
+                    alert("Enter text!");
+                    return false;
+                }
+                if (validation.test(tester)) {
+                    alert("Do not use special characters. Try again.");
+                    return false;
+                }
+                alert("Text valid. Text has no special characters.")
+                return true;
+            }
+
+            function addText() {
+                document.querySelector("h1").innerHTML += " - Add Text"
+            }
+
+        </script>
+    </body>
+</html>
